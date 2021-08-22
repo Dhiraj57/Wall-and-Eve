@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHandler : MonoBehaviour
+public class Player2Handler : MonoBehaviour
 {
     private Rigidbody2D rigidBody2d;
     private bool isGrounded;
@@ -17,10 +17,10 @@ public class PlayerHandler : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.W) && isGrounded == true)
+        if (Input.GetKey(KeyCode.S) && isGrounded == true)
         {
             SoundManager.Instance.Play(SoundManager.Sounds.Jump);
-            rigidBody2d.velocity = new Vector3(0, 20, 0);
+            rigidBody2d.velocity = new Vector3(0, -20, 0);
             isGrounded = false;
         }
     }
@@ -32,10 +32,9 @@ public class PlayerHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Obstacle")
+        if (collision.tag == "Obstacle")
         {
             manager.GameOver();
         }
     }
-
 }
