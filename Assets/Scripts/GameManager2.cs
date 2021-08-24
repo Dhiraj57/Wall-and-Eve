@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager2 : MonoBehaviour
 {
-    public GameOverWindow gameOverPanel;
+    public GameOverWindow2 gameOverPanel;
     public GameObject score;
     public GameObject highscore;
     public GameObject startWindow;
     public GameObject obstacle1;
-    public GameObject obstacle2;
 
     public bool gameStarted;
 
@@ -35,12 +34,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameStart()
-    {    
+    {
         startWindow.SetActive(false);
         score.SetActive(true);
         highscore.SetActive(true);
         obstacle1.SetActive(true);
-        obstacle2.SetActive(true);
+        //obstacle2.SetActive(true);
         gameStarted = true;
     }
 }
