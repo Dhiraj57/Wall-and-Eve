@@ -91,6 +91,8 @@ public class SoundManager : MonoBehaviour
         Music,
         PlayerDeath,
         Jump,
+        Jump2,
+        Hit,
         Pickup,
         EnemyCollision,
         Pause,

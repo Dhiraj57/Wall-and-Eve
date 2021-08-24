@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverWindow : MonoBehaviour
+public class GameOverWindow2 : MonoBehaviour
 {
     public GameObject gameOverPanel;
 
@@ -16,6 +16,6 @@ public class GameOverWindow : MonoBehaviour
     public void Replay()
     {
         SoundManager.Instance.Play(SoundManager.Sounds.ButtonClick);
-        SceneManager.LoadScene("GameScene1");
+        SceneManager.LoadScene("GameScene3");
     }
 }

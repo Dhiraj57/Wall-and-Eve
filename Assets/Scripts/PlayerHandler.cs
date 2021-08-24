@@ -17,11 +17,14 @@ public class PlayerHandler : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.W) && isGrounded == true)
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetMouseButton(0))
         {
-            SoundManager.Instance.Play(SoundManager.Sounds.Jump);
-            rigidBody2d.velocity = new Vector3(0, 20, 0);
-            isGrounded = false;
+            if((isGrounded) && Time.timeScale != 0)
+            {
+                SoundManager.Instance.Play(SoundManager.Sounds.Jump);
+                rigidBody2d.velocity = new Vector3(0, 20, 0);
+                isGrounded = false;
+            }         
         }
     }
 
@@ -34,6 +37,7 @@ public class PlayerHandler : MonoBehaviour
     {
         if(collision.tag == "Obstacle")
         {
+            SoundManager.Instance.Play(SoundManager.Sounds.Hit);
             manager.GameOver();
         }
     }

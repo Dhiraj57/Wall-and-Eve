@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player2Handler : MonoBehaviour
+public class Mode2PlayerHandler : MonoBehaviour
 {
     private Rigidbody2D rigidBody2d;
-    private bool isGrounded;
+    public bool isGrounded;
 
-    public GameManager manager;
+    public GameManager2 manager;
 
     private void Awake()
     {
@@ -17,14 +17,24 @@ public class Player2Handler : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.GetMouseButton(1))
-        {
-            if((isGrounded) && Time.timeScale != 0)
+        if ((isGrounded) && Time.timeScale != 0)
+        {     
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetMouseButtonDown(0))
+            {
+                SoundManager.Instance.Play(SoundManager.Sounds.Jump);
+                rigidBody2d.velocity = new Vector3(0, 20, 0);
+                isGrounded = false;
+            }
+        }
+
+        if ((!isGrounded) && Time.timeScale != 0)
+        {         
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(1))
             {
                 SoundManager.Instance.Play(SoundManager.Sounds.Jump);
                 rigidBody2d.velocity = new Vector3(0, -20, 0);
                 isGrounded = false;
-            }           
+            }
         }
     }
 
